@@ -12,10 +12,12 @@ namespace zdarzenia
 {
     public partial class Form1 : Form
     {
+        delegate void MyDelegate(int actualTabSize);
         public Form1()
         {
             InitializeComponent();
             MyArray tab = new MyArray();
+            EventListener eventListener = new EventListener(tab);
             tab.Add(1);
             tab.Add(2);
             tab.Add(5);

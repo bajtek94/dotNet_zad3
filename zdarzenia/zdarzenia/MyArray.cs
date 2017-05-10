@@ -8,6 +8,14 @@ namespace zdarzenia
 {
     class MyArray
     {
+        public event EventHandler Changed;
+        protected virtual void OnChanged(EventArgs e)
+        {
+            if (Changed != null)
+                Changed(this, e);
+        }
+
+
         int[] tab;
         int countOfElements;
 
@@ -16,6 +24,8 @@ namespace zdarzenia
             countOfElements = 0;
             tab = new int[4];
         }
+
+        
 
         public int this[int el]
         {
