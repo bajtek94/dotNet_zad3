@@ -16,7 +16,7 @@ namespace zdarzenia
         }
         private void TableChanged(int actualSize)
         {
-            Console.WriteLine("[!EVENT!]: Aktualny rozmiar tablicy {0}", actualSize);
+            Console.WriteLine("[!EVENT!]: Aktualny rozmiar tablicy: " + actualSize);
         }
         public void Detach()
         {
