@@ -12,15 +12,15 @@ namespace zdarzenia
         public EventListener(MyArray myArray)
         {
             this.myArray = myArray;
-            myArray.Changed += new EventHandler(ListChanged);
+            myArray.sizeChanged += new MyEventHandler(TableChanged);
         }
-        private void ListChanged(object sender, EventArgs e)
+        private void TableChanged(int actualSize)
         {
-            Console.WriteLine("This is called when the event fires.");
+            Console.WriteLine("[!EVENT!]: Aktualny rozmiar tablicy {0}", actualSize);
         }
         public void Detach()
         {
-            myArray.Changed -= new EventHandler(ListChanged);
+            myArray.sizeChanged -= new MyEventHandler(TableChanged);
             myArray = null;
         }
     }

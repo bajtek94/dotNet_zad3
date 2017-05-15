@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace zdarzenia
 {
+
+    public delegate void MyEventHandler(int actualSize);
+
     class MyArray
     {
+
+        public event MyEventHandler sizeChanged;
+
         public event EventHandler Changed;
         protected virtual void OnChanged(EventArgs e)
         {
@@ -72,6 +78,7 @@ namespace zdarzenia
             Console.WriteLine("Stary rozmiar: " + count);
             Array.Resize(ref tab, newSize);
             Console.WriteLine("Zwiększono rozmiar do: " + tab.Count());
+            sizeChanged(newSize);
         }
     }
 }
