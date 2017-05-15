@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace zdarzenia
 {
     public partial class Form1 : Form
     {
-        delegate void MyDelegate(int actualTabSize);
         public Form1()
         {
             InitializeComponent();
@@ -35,9 +27,9 @@ namespace zdarzenia
             {
                 Console.WriteLine(tab[635]);
             }
-            catch
+            catch(IndexOutOfRangeException)
             {
-                Console.WriteLine("Błąd: Zły indeks");
+                Console.WriteLine("Błąd: Zły indeks ");
             }
             Console.WriteLine(tab[632]);
             Console.WriteLine(tab[32]);

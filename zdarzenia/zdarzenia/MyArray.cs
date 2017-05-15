@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace zdarzenia
 {
@@ -13,12 +10,10 @@ namespace zdarzenia
     {
 
         public event MyEventHandler sizeChanged;
-
-        public event EventHandler Changed;
-        protected virtual void OnChanged(EventArgs e)
+        
+        protected virtual void OnChanged()
         {
-            if (Changed != null)
-                Changed(this, e);
+            sizeChanged?.Invoke(tab.Length);
         }
 
 
@@ -69,6 +64,7 @@ namespace zdarzenia
             countOfElements++;
             Console.WriteLine("dodano liczbę " + el);
             Console.WriteLine("aktualna ilość danych w tablicy: " + countOfElements);
+            OnChanged();
         }
 
         private void growTab(int newSize)
@@ -78,7 +74,7 @@ namespace zdarzenia
             Console.WriteLine("Stary rozmiar: " + count);
             Array.Resize(ref tab, newSize);
             Console.WriteLine("Zwiększono rozmiar do: " + tab.Count());
-            sizeChanged(newSize);
+            OnChanged();
         }
     }
 }
